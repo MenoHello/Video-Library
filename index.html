@@ -9,7 +9,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #f8f8f8;
+            background-color: #ffe9e5;
             margin: 0;
             padding: 20px;
         }
@@ -17,54 +17,71 @@
         .video-library-container {
             max-width: 960px;
             margin: 2rem auto;
-            background-color: #ffe9e5; /* Your brand color */
+            background-color: #ffe9e5; /* Your brand color for main container */
             border-radius: 16px;
             box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-            padding: 20px;
+            padding-top: 20px; /* Adjusted padding to account for tabs */
             position: relative;
             z-index: 1;
         }
 
         .tabs {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start; /* Align tabs to the left */
             flex-wrap: wrap;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #ffccb8; /* Lighter shade of your brand color */
+            margin-bottom: -1px; /* Overlap with content border */
             position: relative;
             z-index: 3;
+            /* Removed border-bottom from here */
+            padding-left: 20px; /* Align with container content */
+            background-color: #ffe9e5; /* Match container background */
+            border-top-left-radius: 16px; /* Match container radius */
+            border-top-right-radius: 16px; /* Match container radius */
         }
 
         .tab-button {
-            background-color: #ffccb8; /* Lighter shade */
-            border: none;
-            padding: 12px 25px;
+            background-color: #ffccb8; /* Lighter brand shade for inactive */
+            border: 1px solid #ffccb8; /* Match background for seamless look */
+            border-bottom-color: #ffe9e5; /* Hide bottom border to merge with content area */
+            padding: 10px 20px; /* Slightly less padding to enhance overlap */
             cursor: pointer;
-            font-size: 1.1em;
+            font-size: 1.05em;
             font-weight: bold;
             color: #5d3a3a; /* Darker text for contrast */
-            border-radius: 8px 8px 0 0;
-            margin: 0 5px -2px 5px; /* Adjust margin for overlap with border */
-            transition: background-color 0.3s ease, color 0.3s ease;
-            position: relative;
-            top: 2px;
+            border-radius: 8px 8px 0 0; /* Rounded top corners */
+            margin-right: -12px; /* Negative margin for overlapping effect */
+            transition: all 0.3s ease;
+            position: relative; /* For z-index */
+            z-index: 1; /* Inactive tabs are behind active */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Subtle shadow for depth */
+        }
+
+        .tab-button:first-child {
+            margin-left: 0; /* No negative margin for the first tab */
         }
 
         .tab-button.active {
-            background-color: #fff;
-            color: #333;
-            border-bottom: 2px solid #fff; /* White border to "lift" the active tab */
-            top: 0;
-            z-index: 1;
+            background-color: #ffa798; /* Darker brand color for active tab */
+            color: #fff; /* White text for active tab */
+            border-color: #ffa798; /* Match background for seamless look */
+            z-index: 2; /* Bring active tab to front */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* More pronounced shadow */
+            transform: translateY(-2px); /* Slight lift for active tab */
+            margin-bottom: -2px; /* Pull it down slightly to cover container border */
         }
 
         .tab-button:hover:not(.active) {
-            background-color: #ffd8c7; /* Slightly darker hover */
+            background-color: #ffbfa2; /* Slightly darker hover */
+            z-index: 1.5; /* Bring hovered inactive tab slightly forward */
         }
 
         .tab-content {
             display: none;
-            padding: 20px 0;
+            padding: 20px; /* Padding inside the content area */
+            background-color: #fff; /* White background for content */
+            border-radius: 0 0 16px 16px; /* Rounded bottom corners, straight top */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Subtle shadow for content area */
+            border-top: 1px solid #ffccb8; /* A subtle line where tabs meet content */
         }
 
         .tab-content.active {
@@ -109,7 +126,6 @@
             border: none;
         }
 
-        /* NEW: Styles for video title and description */
         .video-info {
             padding: 15px;
             text-align: left;
@@ -130,10 +146,10 @@
 
         /* Instagram embed specific adjustments */
         .video-item blockquote {
-            min-width: unset !important; /* Override Instagram's inline min-width */
-            max-width: 100% !important; /* Ensure it fits */
-            margin: 0 auto !important; /* Center Instagram embeds */
-            height: 100% !important; /* Explicitly ensures the blockquote takes full height */
+            min-width: unset !important;
+            max-width: 100% !important;
+            margin: 0 auto !important;
+            height: 100% !important;
         }
     </style>
 </head>
