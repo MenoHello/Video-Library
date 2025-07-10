@@ -9,13 +9,13 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #ffe9e5;
+            background-color: #ffe9e5; /* Changed to brand color */
             margin: 0;
             padding: 20px;
         }
 
         .video-library-container {
-            max-width: 960px;
+            max-width: 1440px; /* Increased by 50% (960 * 1.5 = 1440) */
             margin: 2rem auto;
             background-color: #ffe9e5; /* Your brand color for main container */
             border-radius: 16px;
@@ -32,7 +32,6 @@
             margin-bottom: -1px; /* Overlap with content border */
             position: relative;
             z-index: 3;
-            /* Removed border-bottom from here */
             padding-left: 20px; /* Align with container content */
             background-color: #ffe9e5; /* Match container background */
             border-top-left-radius: 16px; /* Match container radius */
@@ -61,9 +60,9 @@
         }
 
         .tab-button.active {
-            background-color: #ffa798; /* Darker brand color for active tab */
+            background-color: #ffa798; /* Changed to #ffa798 */
             color: #fff; /* White text for active tab */
-            border-color: #ffa798; /* Match background for seamless look */
+            border-color: #ffa798; /* Changed to #ffa798 */
             z-index: 2; /* Bring active tab to front */
             box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* More pronounced shadow */
             transform: translateY(-2px); /* Slight lift for active tab */
@@ -71,21 +70,16 @@
         }
 
         .tab-button:hover:not(.active) {
-            background-color: #ffbfa2; /* Slightly darker hover */
+            background-color: #ffbfa2; /* Changed to #ffbfa2 */
             z-index: 1.5; /* Bring hovered inactive tab slightly forward */
         }
 
-        .tab-content {
-            display: none;
+        .tab-content-wrapper { /* New wrapper for all video items */
             padding: 20px; /* Padding inside the content area */
-            background-color: #fff; /* White background for content */
+            background-color: #ffe9e5; /* Changed to brand color */
             border-radius: 0 0 16px 16px; /* Rounded bottom corners, straight top */
             box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Subtle shadow for content area */
-            border-top: 1px solid #ffccb8; /* A subtle line where tabs meet content */
-        }
-
-        .tab-content.active {
-            display: block;
+            border-top: 1px solid #ffa798; /* Changed to #ffa798 */
         }
 
         .video-grid {
@@ -103,6 +97,11 @@
             transition: transform 0.2s ease;
             position: relative;
             z-index: 0;
+            display: none; /* Hidden by default, shown by JS */
+        }
+
+        .video-item.active { /* Class added by JS to show relevant videos */
+            display: block;
         }
 
         .video-item:hover {
@@ -163,23 +162,12 @@
             <button class="tab-button" data-tab="symptom-relief">Symptom Relief</button>
         </div>
 
-        <div id="hormone-help" class="tab-content active">
+        <div class="tab-content-wrapper"> <!-- New wrapper for all video items -->
             <div class="video-grid">
-                <div class="video-item">
-                    <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/Wjb20SXIvA4?si=vCjsA8aRlSG74kLG"
-                                title="YouTube video player"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen
-                                referrerpolicy="strict-origin-when-cross-origin">
-                        </iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3>Kegel Exercises for Women – A Beginners Guide</h3>
-                        <p>Start your Kegel Journey here with expert instruction on how to do them effectively:</p>
-                    </div>
-                </div>
-                <div class="video-item">
+                <!-- All video items are now here, with data-category attributes -->
+
+                <!-- Hormone Help -->
+                <div class="video-item" data-category="hormone-help">
                     <div class="video-wrapper">
                         <iframe src="https://www.youtube.com/embed/EHE2sLyreCs?si=DJTwwFrQge1jsOaX"
                                 title="YouTube video player"
@@ -189,11 +177,61 @@
                         </iframe>
                     </div>
                     <div class="video-info">
-                        <h3>What is ‘menopause brain’ and how can people navigate it?</h3>
-                        <p>Learn how your changing hormones are making changes you’re unaware of:</p>
+                        <h3>What is ‘Menopause Brain’ and How You Can Navigate it</h3>
+                        <p>Learn how your changing hormones are making changes you’re unaware of.</p>
                     </div>
                 </div>
-                <div class="video-item">
+
+                <!-- Doctor Q&A & Hormone Help -->
+                <div class="video-item" data-category="doctor-qas hormone-help">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/JJZ8z_nTCZQ?si=au2LfVeqW6vnTswd"
+                                title="YouTube video player"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen
+                                referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>You Are Not Crazy! How Menopause Affects the Brain — Lisa Mosconi</h3>
+                        <p>Sharing groundbreaking findings from her research, neuroscientist Lisa Mosconi reveals how decreasing hormonal levels affect brain aging — and shares simple lifestyle changes you can make to support lifelong brain health.</p>
+                    </div>
+                </div>
+
+                <!-- Doctor Q&A -->
+                <div class="video-item" data-category="doctor-qas">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/_gPBuz9Regc?si=WnqRc85_uoSG50m_"
+                                title="YouTube video player"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen
+                                referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Eustachian Tube Dysfunction: Causes & Treatments</h3>
+                        <p>Learn why your ears are stuffy and what you can do about it.</p>
+                    </div>
+                </div>
+
+                <!-- Doctor Q&A & Symptom Relief -->
+                <div class="video-item" data-category="doctor-qas symptom-relief">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/9SLm76jQg3g?si=iZPgx2g4mFMgPwZU"
+                                title="YouTube video player"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen
+                                referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Epley Maneuver for Vertigo</h3>
+                        <p>Feel better with this amazing technique used to relieve dizziness</p>
+                    </div>
+                </div>
+
+                <!-- Real Talk (Instagram) -->
+                <div class="video-item" data-category="real-talk">
                     <div class="video-wrapper">
                         <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DHHLLXcy19d/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14">
                             <div style="padding:16px;">
@@ -249,100 +287,29 @@
                     </blockquote>
                     </div>
                     <div class="video-info">
-                        <h3>Understanding Hormones with Bekah M</h3>
-                        <p>A general discussion on daily hormonal challenges and tips for well-being.</p>
+                        <h3>The Mental Impacts of Micro Decisions</h3>
+                        <p>There are multitudes of daily decisions that women make everyday and they are mentally exhausting.</p>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div id="doctor-qas" class="tab-content">
-            <div class="video-grid">
-                <div class="video-item">
+                <!-- Real Talk -->
+                <div class="video-item" data-category="real-talk">
                     <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/9SLm76jQg3g?si=iZPgx2g4mFMgPwZU1"
-                                title="Placeholder for Doctor Q&A"
+                        <iframe src="https://www.youtube.com/embed/pRyUWWwGhp8?si=x7sWmzoWD1rpR-MA"
+                                title="YouTube video player"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen
                                 referrerpolicy="strict-origin-when-cross-origin">
                         </iframe>
                     </div>
                     <div class="video-info">
-                        <h3>Common Questions Answered by Doctors</h3>
-                        <p>Our experts address frequently asked questions about women's health.</p>
+                        <h3>Exploring the Emotional Toll of Being the Default Parent</h3>
+                        <p>Women handle 71% of family tasks like planning and scheduling, a burden many describe as "invisible labor."</p>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div id="real-talk" class="tab-content">
-            <div class="video-grid">
-                <div class="video-item">
-                    <div class="video-wrapper">
-                        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DLC69vXR8VK/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14">
-                            <div style="padding:16px;">
-                                <a href="https://www.instagram.com/reel/DLC69vXR8VK/?utm_source=ig_embed&utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
-                                    <div style=" display: flex; flex-direction: row; align-items: center;">
-                                        <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div>
-                                        <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
-                                            <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div>
-                                            <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div>
-                                        </div>
-                                    </div>
-                                    <div style="padding: 19% 0;"></div>
-                                    <div style="display:block; height:50px; margin:0 auto 12px; width:50px;">
-                                        <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <g transform="translate(-511.000000, -20.000000)" fill="#000000">
-                                                    <g>
-                                                        <path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path>
-                                                </g>
-                                            </g>
-                                        </g>
-                                    </svg>
-                                </div>
-                                <div style="padding-top: 8px;">
-                                    <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div>
-                                </div>
-                                <div style="padding: 12.5% 0;"></div>
-                                <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;">
-                                    <div>
-                                        <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div>
-                                        <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div>
-                                        <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div>
-                                    </div>
-                                    <div style="margin-left: 8px;">
-                                        <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div>
-                                        <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div>
-                                    </div>
-                                    <div style="margin-left: auto;">
-                                        <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div>
-                                        <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div>
-                                        <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div>
-                                    </div>
-                                </div>
-                                <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;">
-                                    <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div>
-                                    <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div>
-                                </div>
-                            </a>
-                            <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">
-                                <a href="https://www.instagram.com/reel/DLC69vXR8VK/?utm_source=ig_embed&utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by CBS Mornings (@cbsmornings)</a>
-                            </p>
-                        </div>
-                    </blockquote>
-                    </div>
-                    <div class="video-info">
-                        <h3>Real Talk on Mental Load</h3>
-                        <p>Insights into the often unseen emotional and cognitive burden many people carry.</p>
-                    </div>
-                </div>
-                </div>
-        </div>
-
-        <div id="symptom-relief" class="tab-content">
-            <div class="video-grid">
-                <div class="video-item">
+                <!-- Real Talk -->
+                <div class="video-item" data-category="real-talk">
                     <div class="video-wrapper">
                         <iframe src="https://www.youtube.com/embed/cljITUAen_Q?si=Pixke5EeWzUwWLty"
                                 title="YouTube video player"
@@ -353,10 +320,59 @@
                     </div>
                     <div class="video-info">
                         <h3>Dad Discovers Mental Load</h3>
-                        <p>Mental Overload is real and it’s not acknowledged by most people:</p>
+                        <p>Mental overload is real and it’s often not acknowledged by most people</p>
                     </div>
                 </div>
+
+                <!-- Symptom Relief -->
+                <div class="video-item" data-category="symptom-relief">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/Wjb20SXIvA4?si=vCjsA8aRlSG74kLG"
+                                title="YouTube video player"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen
+                                referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Kegel Exercises for Women – A Beginners Guide</h3>
+                        <p>Start your Kegel Journey here with expert instruction on how to do them effectively.</p>
+                    </div>
                 </div>
+
+                <!-- Symptom Relief -->
+                <div class="video-item" data-category="symptom-relief">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/yfPiiOtnz5g?si=FIe3KHmFW0YxcDM7"
+                                title="YouTube video player"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen
+                                referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Kegel Exercises Routine That Strengthens Your Pelvic Floor</h3>
+                        <p>You don’t have to live with leaks – learn how to do Kegels to get you back to you.</p>
+                    </div>
+                </div>
+
+                <!-- Symptom Relief -->
+                <div class="video-item" data-category="symptom-relief">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/-LzgmJKMxgU?si=24R4YYCa0z-vmSM8"
+                                title="YouTube video player"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen
+                                referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>20 Min Strong Low Impact Full Body Dumbbell Workout</h3>
+                        <p>It’s never too late to get stronger.</p>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
     </div>
@@ -364,37 +380,55 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const tabs = document.querySelectorAll('.tab-button');
-            const tabContents = document.querySelectorAll('.tab-content');
+            const videoItems = document.querySelectorAll('.video-item'); // Select all video items
+
+            // Function to filter and display videos
+            function filterVideos(category) {
+                videoItems.forEach(video => {
+                    const categories = video.dataset.category.split(' '); // Split categories by space
+                    if (category === 'all' || categories.includes(category)) {
+                        video.classList.add('active');
+                    } else {
+                        video.classList.remove('active');
+                    }
+                });
+                // Re-process Instagram embeds after visibility changes
+                if (typeof instgrm !== 'undefined') {
+                    instgrm.Embeds.process();
+                }
+            }
 
             tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
-                    // Remove 'active' class from all tabs and contents
+                    // Remove 'active' class from all tabs
                     tabs.forEach(item => item.classList.remove('active'));
-                    tabContents.forEach(item => item.classList.remove('active'));
 
                     // Add 'active' class to the clicked tab
                     tab.classList.add('active');
 
-                    // Get the ID of the content to show
-                    const targetId = tab.dataset.tab;
-                    const activeContent = document.getElementById(targetId);
-                    activeContent.classList.add('active');
-
-                    // Crucial for Instagram embeds: Process them when the tab becomes active.
-                    // This ensures they render correctly after being hidden.
-                    if (typeof instgrm !== 'undefined') {
-                        instgrm.Embeds.process();
-                    }
+                    // Get the category to filter by
+                    const targetCategory = tab.dataset.tab;
+                    filterVideos(targetCategory);
                 });
             });
 
-            // Trigger Instagram embed processing on initial load for the *first* active tab.
-            // This is important so the initially visible Instagram embeds render.
+            // Initial load: show videos for the active tab (Hormone Help by default)
+            const initialActiveTab = document.querySelector('.tab-button.active');
+            if (initialActiveTab) {
+                filterVideos(initialActiveTab.dataset.tab);
+            } else {
+                // Fallback: if no active tab is set, show all or a default category
+                filterVideos('hormone-help'); // Or 'all' if you add an 'All Videos' tab
+            }
+
+            // Trigger Instagram embed processing on initial load for all videos,
+            // as they are all present in the DOM, even if hidden.
             if (typeof instgrm !== 'undefined') {
                 instgrm.Embeds.process();
             }
         });
     </script>
+    <!-- IMPORTANT: Keep this Instagram embed script at the very end of your <body> tag -->
     <script async src="//www.instagram.com/embed.js"></script>
 
 </body>
