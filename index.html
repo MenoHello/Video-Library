@@ -82,15 +82,22 @@
             border-top: 1px solid #ffa798; /* Changed to #ffa798 */
         }
 
-        .video-grid {
-  column-count: 3; /* or 3, depending on screen size */
+       .video-grid {
+  column-count: 2;
   column-gap: 20px;
 }
 
 .video-grid > * {
   break-inside: avoid;
   margin-bottom: 20px;
-        }
+}
+
+/* Mobile-friendly: Switch to 1 column on small screens */
+@media (max-width: 600px) {
+  .video-grid {
+    column-count: 1;
+  }
+}
 
         .video-item {
             background-color: #fff;
