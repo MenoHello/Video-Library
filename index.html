@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Video Library</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #ffe9e5; /* Changed to brand color */
-            margin: 0;
-            padding: 20px;
-        }
+       body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #ffe9e5; /* Changed to brand color */
+    margin: 0;
+    padding: 0;           /* CHANGE THIS: Set to 0 */
+    overflow: hidden;     /* ADD THIS LINE */
+}
 
         .videoLibraryContainer {
             max-width: 1440px; /* Increased by 50% (960 * 1.5 = 1440) */
