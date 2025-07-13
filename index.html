@@ -495,15 +495,32 @@
     <script async src="//www.instagram.com/embed.js"></script>
 
      <!-- 🔽 THIS MAKES HEIGHT ADJUSTMETN AUTOMATICALLY BASED ON LENGTH OF CONTENT = Add this script before closing </body> -->
-  <script>
-    function sendHeight() {
-      const height = document.body.scrollHeight;
-      window.parent.postMessage({ type: 'setHeight', height: height }, '*');
-    }
+ <script>
+  function sendHeight() {
+    const body = document.body;
+    const html = document.documentElement;
+    const height = Math.max(
+      body.scrollHeight,
+      body.offsetHeight,
+      html.clientHeight,
+      html.scrollHeight,
+      html.offsetHeight
+    );
 
-    window.addEventListener('load', sendHeight);
-    window.addEventListener('resize', sendHeight);
-  </script>
+    window.parent.postMessage({ type: 'setHeight', height: height }, '*');
+  }
+
+  // Call multiple times to catch late-loading elements like YouTube
+  window.addEventListener('load', () => {
+    sendHeight();
+    setTimeout(sendHeight, 500);
+    setTimeout(sendHeight, 1500);
+    setTimeout(sendHeight, 3000);
+  });
+
+  window.addEventListener('resize', sendHeight);
+</script>
+
 
     <script>
   function sendHeight() {
