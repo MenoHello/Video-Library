@@ -11,8 +11,8 @@
             color: #333;
             background-color: #ffe9e5; /* Changed to brand color */
             margin: 0;
-            padding: 0;           /* CHANGED: Set to 0 */
-            overflow: hidden;     /* ADDED: To prevent internal scrollbars */
+            padding: 0; /* CHANGED: Set to 0 */
+            overflow: hidden; /* ADDED: To prevent internal scrollbars */
         }
 
         .video-library-container {
@@ -84,7 +84,7 @@
         }
 
         .video-grid {
-            column-count: 3;  /* or 3, depending on screen size */
+            column-count: 3; /* or 3, depending on screen size */
             column-gap: 20px;
         }
 
@@ -262,8 +262,7 @@
                     </div>
                 </div>
 
-    <!-- Hormone Help -->
-                <div class="video-item" data-category="hormone-help">
+    <div class="video-item" data-category="hormone-help">
                     <div class="youtube-video-wrapper">
                         <iframe src="https://www.youtube.com/embed/EHE2sLyreCs?si=DJTwwFrQge1jsOaX"
                                 title="YouTube video player"
@@ -278,7 +277,6 @@
                     </div>
                 </div>
 
-                <!-- Doctor Q&A & Hormone Help -->
                 <div class="video-item" data-category="doctor-qas hormone-help">
                     <div class="youtube-video-wrapper">
                         <iframe src="https://www.youtube.com/embed/JJZ8z_nTCZQ?si=au2LfVeqW6vnTswd"
@@ -294,7 +292,6 @@
                     </div>
                 </div>
 
-                <!-- Doctor Q&A -->
                 <div class="video-item" data-category="doctor-qas">
                     <div class="youtube-video-wrapper">
                         <iframe src="https://www.youtube.com/embed/_gPBuz9Regc?si=WnqRc85_uoSG50m_"
@@ -310,7 +307,6 @@
                     </div>
                 </div>
 
-                <!-- Doctor Q&A & Symptom Relief -->
                 <div class="video-item" data-category="doctor-qas symptom-relief">
                     <div class="youtube-video-wrapper">
                         <iframe src="https://www.youtube.com/embed/9SLm76jQg3g?si=iZPgx2g4mFMgPwZU"
@@ -326,12 +322,9 @@
                     </div>
                 </div>
 
-                <!-- Instagram Video: Why Progesterone Matters (Doctor Q&A & Symptom Relief) -->
                 <div class="video-item" data-category="doctor-qas symptom-relief">
-                    <!-- Instagram blockquote now directly under video-item -->
-                    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DIlpWpPMJ3C/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14">
-                        <!-- The Instagram embed script will populate this area -->
-                    </blockquote>
+                    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DIlpWpPMJ3C/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14">
+                        </blockquote>
                     <div class="video-info">
                         <h3>Why Progesterone Matters in Perimenopause + HRT</h3>
                         <p>Progesterone does more than protect your uterus—it supports your peace of mind. In this video, Dr. Noor Al-Humaidhi breaks down why progesterone is a key part of HRT during perimenopause. It helps balance estrogen to keep the uterine lining healthy, promotes deeper sleep, supports your stress response, and eases mood swings like anxiety, anger, and irritability.</p>
@@ -339,19 +332,15 @@
                 </div>
 
 
-                <!-- Real Talk (Instagram) -->
                 <div class="video-item" data-category="real-talk">
-                    <!-- Instagram blockquote now directly under video-item -->
                     <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DHHLLXcy19d/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14">
-                        <!-- The Instagram embed script will populate this area -->
-                    </blockquote>
+                        </blockquote>
                     <div class="video-info">
                         <h3>Death by a Thousand Decisions: The Hidden Mental Toll on Women</h3>
                         <p>What should I do with the old toys? Where’s that charger? Do we keep this or toss it? In this candid video, a wife and mom breaks down how the never-ending stream of tiny, invisible choices adds up to real mental fatigue. It’s not indecision—it’s decision overload, and it’s exhausting.</p>
                     </div>
                 </div>
 
-                <!-- Real Talk -->
                 <div class="video-item" data-category="real-talk">
                     <div class="youtube-video-wrapper">
                         <iframe src="https://www.youtube.com/embed/pRyUWWwGhp8?si=x7sWmzoWD1rpR-MA"
@@ -367,7 +356,6 @@
                     </div>
                 </div>
 
-                <!-- Real Talk -->
                 <div class="video-item" data-category="real-talk">
                     <div class="youtube-video-wrapper">
                         <iframe src="https://www.youtube.com/embed/cljITUAen_Q?si=Pixke5EeWzUwWLty"
@@ -383,7 +371,6 @@
                     </div>
                 </div>
 
-                <!-- Symptom Relief -->
                 <div class="video-item" data-category="symptom-relief">
                     <div class="youtube-video-wrapper">
                         <iframe src="https://www.youtube.com/embed/Wjb20SXIvA4?si=vCjsA8aRlSG74kLG"
@@ -398,16 +385,16 @@
                         <p>New to Kegels? This beginner-friendly guide walks you through how to activate your pelvic floor muscles the right way—with clear, expert instruction to help you build strength, control, and confidence.</p>
                     </div>
                 </div>
-                
-                </div> </div> </div> <script>
+            </div>
+        </div>
+    </div>
+    <script>
         // Function to send iframe height to parent
         function sendIframeHeight() {
             const contentContainer = document.getElementById('videoLibraryContainer');
             if (contentContainer) {
-                // We add a small buffer (e.g., 20px) to prevent scrollbars from appearing due to
-                // slight rounding differences or bottom margins/paddings not fully accounted for.
-                const height = contentContainer.scrollHeight + 20; 
-                console.log('GitHub Page: Sending iframe height:', height); // For debugging
+                const height = contentContainer.scrollHeight + 20;
+                console.log('GitHub Page: Sending iframe height:', height); // Added console log
                 // IMPORTANT: Replace 'https://YOUR_PIXPA_DOMAIN.com' with your actual Pixpa domain
                 window.parent.postMessage({ type: 'setIframeHeight', height: height }, 'https://YOUR_PIXPA_DOMAIN.com');
             }
@@ -420,7 +407,7 @@
             // Function to filter and display videos
             function filterVideos(category) {
                 videoItems.forEach(video => {
-                    const categories = video.dataset.category.split(' '); // Split categories by space
+                    const categories = video.dataset.category.split(' ');
                     if (category === 'all' || categories.includes(category)) {
                         video.classList.add('active');
                     } else {
@@ -433,20 +420,14 @@
                     instgrm.Embeds.process();
                 }
                 
-                // *** IMPORTANT: Send new iframe height after videos are filtered and displayed ***
-                // Use a small delay to ensure rendering is complete, especially for dynamic content like Instagram embeds
-                setTimeout(sendIframeHeight, 100); 
+                // Increased delay for sending iframe height after tab filter
+                setTimeout(sendIframeHeight, 500); // Increased from 100ms for better reliability
             }
 
             tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
-                    // Remove 'active' class from all tabs
                     tabs.forEach(item => item.classList.remove('active'));
-
-                    // Add 'active' class to the clicked tab
                     tab.classList.add('active');
-
-                    // Get the category to filter by
                     const targetCategory = tab.dataset.tab;
                     filterVideos(targetCategory);
                 });
@@ -457,32 +438,20 @@
             if (initialActiveTab) {
                 filterVideos(initialActiveTab.dataset.tab);
             } else {
-                // Fallback: if no active tab is set, show a default category
-                filterVideos('hormone-help'); // Or 'all' if you add an 'All Videos' tab
+                filterVideos('hormone-help'); // Fallback to 'hormone-help' if no active tab
             }
 
-            // Also, send the height after the initial page load to account for content
-            // and ensure all elements are rendered.
-            // Use a small delay here too for initial rendering.
+            // Send height after initial page load with an increased delay
             window.addEventListener('load', () => {
-                setTimeout(sendIframeHeight, 100);
+                console.log('GitHub Page: window loaded, sending initial height.'); // Added console log
+                setTimeout(sendIframeHeight, 1000); // Increased from 100ms for better reliability
             });
 
             // Using ResizeObserver for more robust height updates
-            // This will catch height changes if content within the active tab
-            // (e.g., Instagram embeds) loads asynchronously or changes size.
             const observer = new ResizeObserver(entries => {
-                // Only send height if the observed element's content box size has changed
-                // (to prevent infinite loops with setting iframe height)
-                // This typically isn't needed if we explicitly call sendIframeHeight
-                // after tab changes, but it's a good safety net for other dynamic changes.
-                // console.log('ResizeObserver detected change, requesting new height.');
-                // For this specific setup where filterVideos explicitly calls sendIframeHeight,
-                // the ResizeObserver might be less critical for tab changes, but good for
-                // embeds that dynamically load.
-                setTimeout(sendIframeHeight, 150); // Add a slight delay
+                console.log('GitHub Page: ResizeObserver detected change, requesting new height.'); // Added console log
+                setTimeout(sendIframeHeight, 150); // Small delay for ResizeObserver
             });
-            // Observe the main container that holds your tabs and content
             observer.observe(document.getElementById('videoLibraryContainer'));
             
             // Initial processing of Instagram embeds if they are initially visible
