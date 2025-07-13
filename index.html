@@ -494,7 +494,123 @@
     <!-- IMPORTANT: Keep this Instagram embed script at the very end of your <body> tag -->
     <script async src="//www.instagram.com/embed.js"></script>
 
-  
+  <!DOCTYPE html for Telling Pixpa to automatically adjust height of iframe based on tab selected>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Video Library</title>
+  <style>
+    /* Your existing CSS (from the screenshot) */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #ffe9e5; /* Changed to brand color */
+      margin: 0;
+      padding: 0; /* Add this line to remove body padding, important for height calculation */
+      overflow: hidden; /* Add this line to prevent internal scrollbars */
+    }
+
+    .video-library-container {
+      max-width: 1440px; /* Increased by 50% (960 * 1.5 = 1440) */
+      margin: 2rem auto;
+      background-color: #ffe9e5; /* Your brand color for main container */
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      padding-top: 20px; /* Adjusted padding to account for tabs */
+      position: relative;
+      z-index: 1;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: flex-start; /* Align tabs to the left */
+      flex-wrap: wrap;
+      margin-bottom: -1px; /* Overlap with content border */
+      position: relative;
+      z-index: 3;
+      padding-left: 20px; /* Align with container content */
+      background-color: #ffe9e5; /* Match container background */
+      border-top-left-radius: 16px; /* Match container radius */
+      border-top-right-radius: 16px;
+    }
+
+    /* Add or verify these styles for your tabs and content */
+    .tab-content {
+      display: none; /* Hide tab content by default */
+    }
+    .tab-content.active {
+      display: block; /* Show active tab content */
+    }
+  </style>
+</head>
+<body>
+
+  <div id="videoLibraryContainer" class="video-library-container">
+    <div class="tabs">
+      <button class="tab-button active" data-tab="all-videos">All Videos</button>
+      <button class="tab-button" data-tab="category1">Category 1</button>
+      </div>
+
+    <div id="all-videos" class="tab-content active">
+      <p>Video 1 - All</p>
+      <p>Video 2 - All</p>
+    </div>
+    <div id="category1" class="tab-content">
+      <p>Video A - Cat 1</p>
+    </div>
+    </div> <script>
+    // ** START OF NEW JAVASCRIPT **
+
+    // Function to send iframe height to parent
+    function sendIframeHeight() {
+      // Get the height of the entire content container, not just the body
+      const contentContainer = document.getElementById('videoLibraryContainer');
+      if (contentContainer) {
+        const height = contentContainer.scrollHeight;
+        // IMPORTANT: Replace 'https://yourpixpadomain.com' with your actual Pixpa domain
+        window.parent.postMessage({ type: 'setIframeHeight', height: height }, 'https://menohello.com'); // <--- REMEMBER TO CHANGE THIS
+      }
+    }
+
+    // --- Tab Switching Logic (Adapt to your existing tab implementation) ---
+    const tabButtons = document.querySelectorAll('.tab-button'); // Ensure your tab buttons have this class
+    const tabContents = document.querySelectorAll('.tab-content'); // Ensure your tab content divs have this class
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove 'active' class from current active tab button and content
+        document.querySelector('.tab-button.active')?.classList.remove('active');
+        document.querySelector('.tab-content.active')?.classList.remove('active');
+
+        // Add 'active' class to clicked tab button and corresponding content
+        button.classList.add('active');
+        const targetTabId = button.dataset.tab; // Ensure your buttons have data-tab="your-content-id"
+        document.getElementById(targetTabId).classList.add('active');
+
+        // *** IMPORTANT: After tab content changes, re-send the height ***
+        sendIframeHeight();
+      });
+    });
+
+    // --- Initial Load and Dynamic Content Changes ---
+
+    // Send height when the page loads (initial display)
+    window.addEventListener('load', sendIframeHeight);
+
+    // Use ResizeObserver to detect changes in content size (more robust)
+    const observer = new ResizeObserver(() => {
+        sendIframeHeight();
+    });
+    // Observe the main container that holds your tabs and content
+    observer.observe(document.getElementById('videoLibraryContainer'));
+
+    // ** END OF NEW JAVASCRIPT FOR HEIGHT ADJUSTMENT**
+  </script>
+
+</body>
+</html>
     
 </body>
 </html>
