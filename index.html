@@ -207,13 +207,53 @@
 </head>
 <body>
 
-    <div class="video-library-container">
-        <div class="tabs">
-            <button class="tab-button active" data-tab="hormone-help">Hormone Help</button>
-            <button class="tab-button" data-tab="doctor-qas">Doctor Q&As</button>
-            <button class="tab-button" data-tab="real-talk">Real Talk</button>
-            <button class="tab-button" data-tab="symptom-relief">Symptom Relief</button>
+  <div id="videoLibraryContainer" class="video-library-container"> <div class="tabs">
+        <button class="tab-button active" data-tab="hormone-help">Hormone Help</button>
+        <button class="tab-button" data-tab="doctor-qas">Doctor Q&As</button>
+        <button class="tab-button" data-tab="real-talk">Real Talk</button>
+        <button class="tab-button" data-tab="symptom-relief">Symptom Relief</button>
+    </div>
+
+    <div id="hormone-help" class="tab-content active"> <div class="tab-content-wrapper"> <div class="video-grid">
+                <div class="video-item" data-category="hormone-help"> <div class="youtube-video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/EHE2sLyreCs?si=DJTwwFrQge1jsOaX"
+                                title="YouTube video player"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen
+                                referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+                    </div>
+                <div class="video-item">...another Hormone Help video...</div>
+            </div>
         </div>
+    </div>
+
+    <div id="doctor-qas" class="tab-content"> <div class="tab-content-wrapper">
+            <div class="video-grid">
+                <div class="video-item" data-category="doctor-qas">
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <div id="real-talk" class="tab-content"> <div class="tab-content-wrapper">
+            <div class="video-grid">
+                <div class="video-item" data-category="real-talk">
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="symptom-relief" class="tab-content"> <div class="tab-content-wrapper">
+            <div class="video-grid">
+                <div class="video-item" data-category="symptom-relief">
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
 
         <div class="tab-content-wrapper">
             <div class="video-grid">
