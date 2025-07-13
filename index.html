@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Video Library</title>
     <style>
-       body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #ffe9e5; /* Changed to brand color */
-    margin: 0;
-    padding: 0;           /* CHANGE THIS: Set to 0 */
-    overflow: hidden;     /* ADD THIS LINE */
-}
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffe9e5; /* Changed to brand color */
+            margin: 0;
+            padding: 0;           /* CHANGED: Set to 0 */
+            overflow: hidden;     /* ADDED: To prevent internal scrollbars */
+        }
 
-        .videoLibraryContainer {
+        .video-library-container {
             max-width: 1440px; /* Increased by 50% (960 * 1.5 = 1440) */
             margin: 2rem auto;
             background-color: #ffe9e5; /* Your brand color for main container */
@@ -75,7 +75,7 @@
             z-index: 1.5; /* Bring hovered inactive tab slightly forward */
         }
 
-        .tab-content-wrapper { /* Wrapper for all video items */
+        .tab-content-wrapper { /* Wrapper for all video items (now only ONE for the whole page) */
             padding: 20px; /* Padding inside the content area */
             background-color: #ffe9e5; /* Changed to brand color */
             border-radius: 0 0 16px 16px; /* Rounded bottom corners, straight top */
@@ -83,22 +83,22 @@
             border-top: 1px solid #ffa798; /* Changed to #ffa798 */
         }
 
-       .video-grid {
-  column-count: 3;
-  column-gap: 20px;
-}
+        .video-grid {
+            column-count: 3;  /* or 3, depending on screen size */
+            column-gap: 20px;
+        }
 
-.video-grid > * {
-  break-inside: avoid;
-  margin-bottom: 20px;
-}
+        .video-grid > * {
+            break-inside: avoid;
+            margin-bottom: 20px;
+        }
 
-/* Mobile-friendly: Switch to 1 column on small screens */
-@media (max-width: 600px) {
-  .video-grid {
-    column-count: 1;
-  }
-}
+        /* Mobile-friendly: Switch to 1 column on small screens */
+        @media (max-width: 600px) {
+            .video-grid {
+                column-count: 1;
+            }
+        }
 
         .video-item {
             background-color: #fff;
@@ -195,71 +195,28 @@
         }
 
         /* Ensure the Instagram iframe itself fills its container */
-       iframe,
-    .instagram-media {
-      width: 100%;
-      border: none;
-      border-radius: 12px;
-      background: #fff;
-      max-height: 500px;
+        iframe,
+        .instagram-media {
+            width: 100%;
+            border: none;
+            border-radius: 12px;
+            background: #fff;
+            max-height: 500px;
         }
     </style>
 </head>
 <body>
 
-  <div id="videoLibraryContainer" class="video-library-container"> <div class="tabs">
-        <button class="tab-button active" data-tab="hormone-help">Hormone Help</button>
-        <button class="tab-button" data-tab="doctor-qas">Doctor Q&As</button>
-        <button class="tab-button" data-tab="real-talk">Real Talk</button>
-        <button class="tab-button" data-tab="symptom-relief">Symptom Relief</button>
-    </div>
-
-    <div id="hormone-help" class="tab-content active"> <div class="tab-content-wrapper"> <div class="video-grid">
-                <div class="video-item" data-category="hormone-help"> <div class="youtube-video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/EHE2sLyreCs?si=DJTwwFrQge1jsOaX"
-                                title="YouTube video player"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen
-                                referrerpolicy="strict-origin-when-cross-origin">
-                        </iframe>
-                    </div>
-                    </div>
-                <div class="video-item">...another Hormone Help video...</div>
-            </div>
+    <div id="videoLibraryContainer" class="video-library-container">
+        <div class="tabs">
+            <button class="tab-button active" data-tab="hormone-help">Hormone Help</button>
+            <button class="tab-button" data-tab="doctor-qas">Doctor Q&As</button>
+            <button class="tab-button" data-tab="real-talk">Real Talk</button>
+            <button class="tab-button" data-tab="symptom-relief">Symptom Relief</button>
         </div>
-    </div>
-
-    <div id="doctor-qas" class="tab-content"> <div class="tab-content-wrapper">
-            <div class="video-grid">
-                <div class="video-item" data-category="doctor-qas">
-                    </div>
-                </div>
-        </div>
-    </div>
-
-    <div id="real-talk" class="tab-content"> <div class="tab-content-wrapper">
-            <div class="video-grid">
-                <div class="video-item" data-category="real-talk">
-                    </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="symptom-relief" class="tab-content"> <div class="tab-content-wrapper">
-            <div class="video-grid">
-                <div class="video-item" data-category="symptom-relief">
-                    </div>
-            </div>
-        </div>
-    </div>
-
-    </div>
 
         <div class="tab-content-wrapper">
             <div class="video-grid">
-                <!-- All video items are now here, with data-category attributes -->
-
-                <!-- Hormone Help -->
                 <div class="video-item" data-category="hormone-help">
                     <div class="youtube-video-wrapper">
                         <iframe src="https://www.youtube.com/embed/EHE2sLyreCs?si=DJTwwFrQge1jsOaX"
@@ -275,173 +232,6 @@
                     </div>
                 </div>
 
-                <!-- Doctor Q&A & Hormone Help -->
-                <div class="video-item" data-category="doctor-qas hormone-help">
-                    <div class="youtube-video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/JJZ8z_nTCZQ?si=au2LfVeqW6vnTswd"
-                                title="YouTube video player"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen
-                                referrerpolicy="strict-origin-when-cross-origin">
-                        </iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3>You Are Not Crazy! How Menopause Affects the Brain — Lisa Mosconi</h3>
-                        <p>Sharing groundbreaking findings from her research, neuroscientist Lisa Mosconi reveals how decreasing hormonal levels affect brain aging — and shares simple lifestyle changes you can make to support lifelong brain health.</p>
-                    </div>
-                </div>
-
-                <!-- Doctor Q&A -->
-                <div class="video-item" data-category="doctor-qas">
-                    <div class="youtube-video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/_gPBuz9Regc?si=WnqRc85_uoSG50m_"
-                                title="YouTube video player"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen
-                                referrerpolicy="strict-origin-when-cross-origin">
-                        </iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3>Ear Fullness or Pressure? It Might Be Eustachian Tube Dysfunction</h3>
-                        <p>If your ears feel clogged, pressurized, or make clicking sounds, you’re not imagining it. Dr. Michelle explains what Eustachian Tube Dysfunction is, what causes it, and how to find relief. It’s a lesser-known condition with real impact—especially during hormonal shifts.</p>
-                    </div>
-                </div>
-
-                <!-- Doctor Q&A & Symptom Relief -->
-                <div class="video-item" data-category="doctor-qas symptom-relief">
-                    <div class="youtube-video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/9SLm76jQg3g?si=iZPgx2g4mFMgPwZU"
-                                title="YouTube video player"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen
-                                referrerpolicy="strict-origin-when-cross-origin">
-                        </iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3>How to Do the Epley Maneuver for Vertigo Relief</h3>
-                        <p>Struggling with dizziness or spinning sensations? This video walks you through the Epley maneuver—a simple, effective technique to treat vertigo caused by inner ear issues. Watch the step-by-step demo, then see an animated view of what’s happening inside your ear to cause those unsettling symptoms.</p>
-                    </div>
-                </div>
-                
-                
-                   <div class="video-item" data-category="doctor-qas symptom-relief">
-                    <div class="youtube-video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/9SLm76jQg3g?si=iZPgx2g4mFMgPwZU"
-                                title="YouTube video player"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen
-                                referrerpolicy="strict-origin-when-cross-origin">
-                        </iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3>How to Do the Epley Maneuver for Vertigo Relief</h3>
-                        <p>Struggling with dizziness or spinning sensations? This video walks you through the Epley maneuver—a simple, effective technique to treat vertigo caused by inner ear issues. Watch the step-by-step demo, then see an animated view of what’s happening inside your ear to cause those unsettling symptoms.</p>
-                    </div>
-                </div>
-
-                <!-- Instagram Video: Why Progesterone Matters (Doctor Q&A & Symptom Relief) -->
-                <div class="video-item" data-category="doctor-qas symptom-relief">
-                    <!-- Instagram blockquote now directly under video-item -->
-                    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DIlpWpPMJ3C/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14">
-                        <!-- The Instagram embed script will populate this area -->
-                    </blockquote>
-                    <div class="video-info">
-                        <h3>Why Progesterone Matters in Perimenopause + HRT</h3>
-                        <p>Progesterone does more than protect your uterus—it supports your peace of mind. In this video, Dr. Noor Al-Humaidhi breaks down why progesterone is a key part of HRT during perimenopause. It helps balance estrogen to keep the uterine lining healthy, promotes deeper sleep, supports your stress response, and eases mood swings like anxiety, anger, and irritability.</p>
-                    </div>
-                </div>
-
-
-                <!-- Real Talk (Instagram) -->
-                <div class="video-item" data-category="real-talk">
-                    <!-- Instagram blockquote now directly under video-item -->
-                    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DHHLLXcy19d/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14">
-                        <!-- The Instagram embed script will populate this area -->
-                    </blockquote>
-                    <div class="video-info">
-                        <h3>Death by a Thousand Decisions: The Hidden Mental Toll on Women</h3>
-                        <p>What should I do with the old toys? Where’s that charger? Do we keep this or toss it? In this candid video, a wife and mom breaks down how the never-ending stream of tiny, invisible choices adds up to real mental fatigue. It’s not indecision—it’s decision overload, and it’s exhausting.</p>
-                    </div>
-                </div>
-
-                <!-- Real Talk -->
-                <div class="video-item" data-category="real-talk">
-                    <div class="youtube-video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/pRyUWWwGhp8?si=x7sWmzoWD1rpR-MA"
-                                title="YouTube video player"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen
-                                referrerpolicy="strict-origin-when-cross-origin">
-                        </iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3>The Invisible Load: Why Mental Overload Hits Women Hard</h3>
-                        <p>From sick days to snack duty, vacation planning to grocery lists—this video explores the relentless mental weight women carry every day. It’s not just stress—it’s survival mode. Let’s name it, unpack it, and talk about what needs to change.</p>
-                    </div>
-                </div>
-
-                <!-- Real Talk -->
-                <div class="video-item" data-category="real-talk">
-                    <div class="youtube-video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/cljITUAen_Q?si=Pixke5EeWzUwWLty"
-                                title="YouTube video player"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen
-                                referrerpolicy="strict-origin-when-cross-origin">
-                        </iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3>He Gets It: One Dad’s Wake-Up Call About the Mental Load</h3>
-                        <p>When a husband and father finally sees the invisible work his partner carries—every chore, appointment, detail, and decision—it hits different. In this honest reflection, he breaks down what so many miss: the weight women bear without recognition, even from themselves. A must-watch for partners, parents, and anyone ready to understand more deeply.</p>
-                    </div>
-                </div>
-
-                <!-- Symptom Relief -->
-                <div class="video-item" data-category="symptom-relief">
-                    <div class="youtube-video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/Wjb20SXIvA4?si=vCjsA8aRlSG74kLG"
-                                title="YouTube video player"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen
-                                referrerpolicy="strict-origin-when-cross-origin">
-                        </iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3>Kegel Exercises for Women – A Beginners Guide</h3>
-                        <p>New to Kegels? This beginner-friendly guide walks you through how to activate your pelvic floor muscles the right way—with clear, expert instruction to help you build strength, control, and confidence.</p>
-                    </div>
-                </div>
-
-<div class="video-item" data-category="doctor-qas">
-                    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/C4pq6YDPKP7?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14">
-                        </blockquote>
-                    <div class="video-info">
-                        <h3>What Is Raynaud’s Syndrome? Menopause, Estrogen & Cold Fingers Explained</h3>
-                        <p>Learn how Raynaud’s Syndrome causes fingers and toes to turn white and cold—and why hormonal shifts like declining estrogen during menopause can intensify symptoms. Learn what’s happening in your blood vessels and why it matters.</p>
-                    </div>
-                </div>
-
-<div class="video-item" data-category="hormone-help">
-                    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DL8XhQLAm-w/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14">
-                        </blockquote>
-                    <div class="video-info">
-                        <h3>Not All Hormones Are Created Equal: Why Delivery + Formulation Matter</h3>
-                        <p>From progesterone vs. progestins to oral vs. transdermal estrogen, this is a must-watch if you’re considering menopausal hormone therapy. Whether you're navigating premature menopause, perimenopause, or menopause, you deserve more than vague advice. This video makes the science digestible and the options clearer.</p>
-                    </div>
-                </div>
-
-<div class="video-item" data-category="real-talk">
-                    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DLpzoZ8t551?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14">
-                        </blockquote>
-                    <div class="video-info">
-                        <h3>The Funding Gap: What Gets More Money Than Women’s Health?</h3>
-                        <p>This eye-opening video breaks down the absurd truth: male baldness, erectile dysfunction—even drunk mice—receive more research funding than endometriosis, PMDD, PCOS, and period pain. The numbers don’t lie—menstrual and hormonal health continue to be underfunded and under-prioritized. Watch to get fired up, informed, and ready to demand better.</p>
-                    </div>
-                </div>
-
-<!-- INSERT NEW VIDEO CODE BELOW THIS -->
-                
-                <!-- Symptom Relief -->
                 <div class="video-item" data-category="symptom-relief">
                     <div class="youtube-video-wrapper">
                         <iframe src="https://www.youtube.com/embed/yfPiiOtnz5g?si=FIe3KHmFW0YxcDM7"
@@ -457,7 +247,6 @@
                     </div>
                 </div>
 
-                <!-- Symptom Relief -->
                 <div class="video-item" data-category="symptom-relief">
                     <div class="youtube-video-wrapper">
                         <iframe src="https://www.youtube.com/embed/-LzgmJKMxgU?si=24R4YYCa0z-vmSM8"
@@ -473,15 +262,23 @@
                     </div>
                 </div>
 
-            </div>
-        </div>
+                </div> </div> </div> <script>
+        // Function to send iframe height to parent
+        function sendIframeHeight() {
+            const contentContainer = document.getElementById('videoLibraryContainer');
+            if (contentContainer) {
+                // We add a small buffer (e.g., 20px) to prevent scrollbars from appearing due to
+                // slight rounding differences or bottom margins/paddings not fully accounted for.
+                const height = contentContainer.scrollHeight + 20; 
+                console.log('GitHub Page: Sending iframe height:', height); // For debugging
+                // IMPORTANT: Replace 'https://YOUR_PIXPA_DOMAIN.com' with your actual Pixpa domain
+                window.parent.postMessage({ type: 'setIframeHeight', height: height }, 'https://YOUR_PIXPA_DOMAIN.com');
+            }
+        }
 
-    </div>
-
-    <script>
         document.addEventListener('DOMContentLoaded', function() {
             const tabs = document.querySelectorAll('.tab-button');
-            const videoItems = document.querySelectorAll('.video-item'); // Select all video items
+            const videoItems = document.querySelectorAll('.video-item');
 
             // Function to filter and display videos
             function filterVideos(category) {
@@ -493,11 +290,15 @@
                         video.classList.remove('active');
                     }
                 });
+
                 // Re-process Instagram embeds after visibility changes
-                // This is crucial for Instagram videos to load their content when their tab becomes active.
-                if (typeof instgrm !== 'undefined') {
+                if (typeof instgrm !== 'undefined' && instgrm.Embeds && instgrm.Embeds.process) {
                     instgrm.Embeds.process();
                 }
+                
+                // *** IMPORTANT: Send new iframe height after videos are filtered and displayed ***
+                // Use a small delay to ensure rendering is complete, especially for dynamic content like Instagram embeds
+                setTimeout(sendIframeHeight, 100); 
             }
 
             tabs.forEach(tab => {
@@ -519,139 +320,41 @@
             if (initialActiveTab) {
                 filterVideos(initialActiveTab.dataset.tab);
             } else {
-                // Fallback: if no active tab is set, show all or a default category
+                // Fallback: if no active tab is set, show a default category
                 filterVideos('hormone-help'); // Or 'all' if you add an 'All Videos' tab
             }
 
-            // Trigger Instagram embed processing on initial load for all videos,
-            // as they are all present in the DOM, even if hidden.
-            // This is a general call to ensure any Instagram embeds that are initially visible
-            // or become visible are processed.
-            if (typeof instgrm !== 'undefined') {
+            // Also, send the height after the initial page load to account for content
+            // and ensure all elements are rendered.
+            // Use a small delay here too for initial rendering.
+            window.addEventListener('load', () => {
+                setTimeout(sendIframeHeight, 100);
+            });
+
+            // Using ResizeObserver for more robust height updates
+            // This will catch height changes if content within the active tab
+            // (e.g., Instagram embeds) loads asynchronously or changes size.
+            const observer = new ResizeObserver(entries => {
+                // Only send height if the observed element's content box size has changed
+                // (to prevent infinite loops with setting iframe height)
+                // This typically isn't needed if we explicitly call sendIframeHeight
+                // after tab changes, but it's a good safety net for other dynamic changes.
+                // console.log('ResizeObserver detected change, requesting new height.');
+                // For this specific setup where filterVideos explicitly calls sendIframeHeight,
+                // the ResizeObserver might be less critical for tab changes, but good for
+                // embeds that dynamically load.
+                setTimeout(sendIframeHeight, 150); // Add a slight delay
+            });
+            // Observe the main container that holds your tabs and content
+            observer.observe(document.getElementById('videoLibraryContainer'));
+            
+            // Initial processing of Instagram embeds if they are initially visible
+            if (typeof instgrm !== 'undefined' && instgrm.Embeds && instgrm.Embeds.process) {
                 instgrm.Embeds.process();
             }
         });
     </script>
-    <!-- IMPORTANT: Keep this Instagram embed script at the very end of your <body> tag -->
     <script async src="//www.instagram.com/embed.js"></script>
 
-  <!DOCTYPE html for Telling Pixpa to automatically adjust height of iframe based on tab selected>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Video Library</title>
-  <style>
-    /* Your existing CSS (from the screenshot) */
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background-color: #ffe9e5; /* Changed to brand color */
-      margin: 0;
-      padding: 0; /* Add this line to remove body padding, important for height calculation */
-      overflow: hidden; /* Add this line to prevent internal scrollbars */
-    }
-
-    .video-library-container {
-      max-width: 1440px; /* Increased by 50% (960 * 1.5 = 1440) */
-      margin: 2rem auto;
-      background-color: #ffe9e5; /* Your brand color for main container */
-      border-radius: 16px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-      padding-top: 20px; /* Adjusted padding to account for tabs */
-      position: relative;
-      z-index: 1;
-    }
-
-    .tabs {
-      display: flex;
-      justify-content: flex-start; /* Align tabs to the left */
-      flex-wrap: wrap;
-      margin-bottom: -1px; /* Overlap with content border */
-      position: relative;
-      z-index: 3;
-      padding-left: 20px; /* Align with container content */
-      background-color: #ffe9e5; /* Match container background */
-      border-top-left-radius: 16px; /* Match container radius */
-      border-top-right-radius: 16px;
-    }
-
-    /* Add or verify these styles for your tabs and content */
-    .tab-content {
-      display: none; /* Hide tab content by default */
-    }
-    .tab-content.active {
-      display: block; /* Show active tab content */
-    }
-  </style>
-</head>
-<body>
-
-  <div id="videoLibraryContainer" class="video-library-container">
-    <div class="tabs">
-      <button class="tab-button active" data-tab="all-videos">All Videos</button>
-      <button class="tab-button" data-tab="category1">Category 1</button>
-      </div>
-
-    <div id="all-videos" class="tab-content active">
-      <p>Video 1 - All</p>
-      <p>Video 2 - All</p>
-    </div>
-    <div id="category1" class="tab-content">
-      <p>Video A - Cat 1</p>
-    </div>
-    </div> <script>
-    // ** START OF NEW JAVASCRIPT **
-
-    // Function to send iframe height to parent
-    function sendIframeHeight() {
-      // Get the height of the entire content container, not just the body
-      const contentContainer = document.getElementById('videoLibraryContainer');
-      if (contentContainer) {
-        const height = contentContainer.scrollHeight;
-        // IMPORTANT: Replace 'https://yourpixpadomain.com' with your actual Pixpa domain
-        window.parent.postMessage({ type: 'setIframeHeight', height: height }, 'https://menohello.com'); // <--- REMEMBER TO CHANGE THIS
-      }
-    }
-
-    // --- Tab Switching Logic (Adapt to your existing tab implementation) ---
-    const tabButtons = document.querySelectorAll('.tab-button'); // Ensure your tab buttons have this class
-    const tabContents = document.querySelectorAll('.tab-content'); // Ensure your tab content divs have this class
-
-    tabButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        // Remove 'active' class from current active tab button and content
-        document.querySelector('.tab-button.active')?.classList.remove('active');
-        document.querySelector('.tab-content.active')?.classList.remove('active');
-
-        // Add 'active' class to clicked tab button and corresponding content
-        button.classList.add('active');
-        const targetTabId = button.dataset.tab; // Ensure your buttons have data-tab="your-content-id"
-        document.getElementById(targetTabId).classList.add('active');
-
-        // *** IMPORTANT: After tab content changes, re-send the height ***
-        sendIframeHeight();
-      });
-    });
-
-    // --- Initial Load and Dynamic Content Changes ---
-
-    // Send height when the page loads (initial display)
-    window.addEventListener('load', sendIframeHeight);
-
-    // Use ResizeObserver to detect changes in content size (more robust)
-    const observer = new ResizeObserver(() => {
-        sendIframeHeight();
-    });
-    // Observe the main container that holds your tabs and content
-    observer.observe(document.getElementById('videoLibraryContainer'));
-
-    // ** END OF NEW JAVASCRIPT FOR HEIGHT ADJUSTMENT**
-  </script>
-
-</body>
-</html>
-    
 </body>
 </html>
